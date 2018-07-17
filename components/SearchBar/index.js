@@ -1,11 +1,11 @@
-import { Button, TextInput } from "cot-experience";
-import React from "react";
-import styled, { withTheme } from "styled-components";
+import { Button, TextInput } from 'cot-experience'
+import React from 'react'
+import styled, { withTheme } from 'styled-components'
 
 const Wrapper = styled.div`
   position: relative;
   width: 100%;
-`;
+`
 
 const SearchButton = styled(Button)`
   position: absolute;
@@ -15,20 +15,20 @@ const SearchButton = styled(Button)`
   i {
     color: #fff;
   }
-`;
+`
 
-const SearchBar = props => {
+const SearchBar = () => {
   return (
     <Wrapper>
-      <TextInput placeholder="Search customer" full />
-      <SearchButton primary solid icon="search">
-        {/* <Icon name="search" />
+      <TextInput placeholder='Search customer' full />
+      <SearchButton primary solid icon='search'>
+        {/* <Icon name='search' />
         ahahaahh */}
       </SearchButton>
     </Wrapper>
-  );
-};
+  )
+}
 
-SearchBar.propTypes = {};
+SearchBar.propTypes = {}
 
-export default withTheme(SearchBar);
+export default withTheme(SearchBar)

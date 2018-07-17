@@ -4,21 +4,21 @@
  * and render every page with the same layout
  */
 
-import "isomorphic-unfetch";
-import withRedux from "next-redux-wrapper";
-import App, { Container } from "next/app";
-import React from "react";
-import Layout from "../components/Layout";
-import { initStore } from "../store";
+import 'isomorphic-unfetch'
+import withRedux from 'next-redux-wrapper'
+import App, { Container } from 'next/app'
+import React from 'react'
+import Layout from '../components/Layout'
+import { initStore } from '../store'
 
 export default withRedux(initStore, { debug: false })(
   class MyApp extends App {
     constructor(props) {
-      super(props);
-      this.state = { isLogin: false };
+      super(props)
+      this.state = { isLogin: false }
     } 
 
-    static async getInitialProps({ Component, router, ctx }) {
+    static async getInitialProps({ Component, /* router ,*/ ctx }) {
       return {
         pageProps: {
           // Call page-level getInitialProps
@@ -26,21 +26,21 @@ export default withRedux(initStore, { debug: false })(
             ? await Component.getInitialProps(ctx)
             : {})
         }
-      };
+      }
     }
 
     async componentDidMount() {}
 
     handleLoginClicked = () => {
-      this.props.store.dispatch(showModal("login")); //show modal in login view
+      this.props.store.dispatch(/* showModal('login') */) //show modal in login view
     };
 
     handleLogoutClicked = () => {
-      this.props.store.dispatch(doLogout());
+      this.props.store.dispatch(/* doLogout() */)
     };
 
     render() {
-      const { Component, pageProps, store } = this.props;
+      const { Component, pageProps/* , store */ } = this.props
 
       return (
         <Container>
@@ -48,7 +48,7 @@ export default withRedux(initStore, { debug: false })(
             <Component {...pageProps} />
           </Layout>
         </Container>
-      );
+      )
     }
   }
-);
+)

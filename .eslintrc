@@ -1,0 +1,31 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "react/display-name": 0,
+    "react/no-children-prop": 0,
+    "semi": [
+      1,
+      "never"
+    ],
+    "quotes": [
+      1,
+      "single"
+    ]
+  },
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true,
+    "serviceworker": true
+  }
+}
