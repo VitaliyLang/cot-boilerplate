@@ -4,6 +4,7 @@ import * as types from './actionTypes'
 const initialState = Immutable({
   user: null,
   isLoggedIn: false,
+  items: [],
   accessToken: null
 })
 
@@ -13,7 +14,9 @@ export default function reduce(state = initialState, action = {}) {
       return Immutable.merge(state, {
         user: action.user,
         accessToken: action.token,
+        items: action.payload,
         isLoggedIn: true
+        
       })
     }
 
