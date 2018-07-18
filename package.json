@@ -12,7 +12,8 @@
     "start": "next start",
     "lint": "eslint --ext .js --ext .jsx .",
     "fix": "yarn lint --fix",
-    "mock-api": "npx json-server -p 3001 --watch db.json"
+    "mock-api": "npx json-server -p 3001 --watch db.json",
+    "test": "jest"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.5.1",
@@ -33,6 +34,7 @@
     "styled-components": "^3.3.3"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
     "babel-jest": "^23.4.0",
     "eslint": "^5.1.0",
