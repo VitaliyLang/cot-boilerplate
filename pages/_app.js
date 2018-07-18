@@ -10,15 +10,15 @@ import App, { Container } from 'next/app'
 import React from 'react'
 import Layout from '../components/Layout'
 import { initStore } from '../store'
-import { createStore } from "redux";
-import { Provider } from "react-redux";
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
 export default withRedux(initStore, { debug: false })(
   class MyApp extends App {
     constructor(props) {
       super(props)
-      this.state = { isLogin: false }
-    }
+      this.state = { isLogin: true }
+    } 
 
     static async getInitialProps({ Component, /* router ,*/ ctx }) {
       return {

@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-`;
+`
 class Login extends Component {
   constructor(props) {
     super(props)

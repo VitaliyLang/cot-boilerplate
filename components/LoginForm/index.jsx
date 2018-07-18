@@ -19,7 +19,7 @@ class LoginForm extends Component {
     onSubmit(e) {
         e.preventDefault()
         // console.log(e.target)
-      this.props.login();
+      this.props.login()
         // console.log(this.state)
     }
     onChange(e) {
