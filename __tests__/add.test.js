@@ -1,6 +1,6 @@
-const add = require('./add');
-describe('add', () => {
+const add = require('../test/add')
+describe('test', () => {
   it('should add two numbers', () => {
-    expect(add(1, 2)).toBe(3);
-  });
-});
+    expect(add(1, 2)).toEqual(3)
+  })
+})
