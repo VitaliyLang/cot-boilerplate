@@ -12,7 +12,7 @@
     "start": "next start",
     "lint": "eslint --ext .js --ext .jsx .",
     "fix": "yarn lint --fix",
-    "mock-api": "npx json-server -p 3001 --watch db.json",
+    "mock-api": "json-server -p 3001 --watch db.json",
     "test": "jest"
   },
   "dependencies": {

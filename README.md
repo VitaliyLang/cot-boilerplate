@@ -6,9 +6,11 @@ You can find more about it in detail in [Github](https://github.com/zeit/next.js
 
 ## Setup
 
+Run `cp .env.sample .env`. (modify `.env` if necessary)
+
 In the project root run `yarn install` - install yarn [here](https://yarnpkg.com/en/)
 
-run `yarn dev` and you should see the app running on `http://localhost:3000`
+Run `yarn dev` and you should see the app running on `http://localhost:3000`
 
 ## Building pages
 

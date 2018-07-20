@@ -20,7 +20,8 @@
     "quotes": [
       1,
       "single"
-    ]
+    ],
+    "no-console": 1
   },
   "env": {
     "node": true,

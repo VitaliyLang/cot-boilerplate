@@ -35,7 +35,7 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
 
-          <link href="/apps/apply/static/styles/main.css" rel="stylesheet" />
+          <link href="/static/styles.css" rel="stylesheet" />
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0"

@@ -1,5 +1,5 @@
 import { SideNav } from 'cot-experience'
-import { Box, Flex } from 'grid-styled'
+import { Flex } from 'grid-styled'
 import React, { Component, Fragment } from 'react'
 import { ThemeProvider } from 'styled-components'
 import PropTypes from 'prop-types'
@@ -26,17 +26,23 @@ class Layout extends Component {
     return (
       <ThemeProvider theme={defaultTheme}>
         <Fragment>
-          {this.props.isLogged && (
+          {this.props.isLogged ? (
             <Fragment>
               <AppHeader toggleSideNav={this.toggleSideNav} />
               <SideNav ref={el => (this.sideNavRef = el)} />
+              <main>
+                <Flex justifyContent='stretch' pl={205} pr={55}>
+                  {this.props.children}
+                </Flex>
+              </main>
             </Fragment>
-          )}
-          <main>
-            <Flex>
-              <Box>{this.props.children}</Box>
-            </Flex>
-          </main>
+          ) : (
+              <main>
+                <Flex>
+                  {this.props.children}
+                </Flex>
+              </main>
+            )}
         </Fragment>
       </ThemeProvider>
     )

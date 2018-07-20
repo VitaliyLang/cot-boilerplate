@@ -1,5 +1,55 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
+  "customers": [
+    {
+      "_id": "5b51bee16cd0e69fb795a6d5",
+      "name": "Sultraxin",
+      "note": "laborum",
+      "dueTime": "Wednesday, December 31, 2014 12:47 PM",
+      "completed": true
+    },
+    {
+      "_id": "5b51bee19aaa797304d5210f",
+      "name": "Centuria",
+      "note": "laboris",
+      "dueTime": "Monday, December 25, 2017 8:01 PM",
+      "completed": true
+    },
+    {
+      "_id": "5b51bee175afc5bdb1422878",
+      "name": "Vicon",
+      "note": "officia",
+      "dueTime": "Saturday, May 30, 2015 5:01 PM",
+      "completed": true
+    },
+    {
+      "_id": "5b51bee1664ccffdde89cfdf",
+      "name": "Uncorp",
+      "note": "ut",
+      "dueTime": "Thursday, April 2, 2015 9:21 AM",
+      "completed": false
+    },
+    {
+      "_id": "5b51bee19d925f6b53086238",
+      "name": "Steelfab",
+      "note": "elit",
+      "dueTime": "Wednesday, June 10, 2015 6:00 AM",
+      "completed": false
+    },
+    {
+      "_id": "5b51bee12a9da0804e61b762",
+      "name": "Metroz",
+      "note": "eu",
+      "dueTime": "Monday, May 14, 2018 6:19 PM",
+      "completed": false
+    },
+    {
+      "_id": "5b51bee1f95ccfa1fe91a217",
+      "name": "Ronelon",
+      "note": "adipisicing",
+      "dueTime": "Wednesday, December 10, 2014 1:13 PM",
+      "completed": true
+    }
+  ],
   "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
   "profile": { "name": "typicode" }
 }
