@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import React, { Component } from 'react'
-import LoginForm from '../components/LoginForm'
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,7 +16,7 @@ class Login extends Component {
     return (
       <div>
       <Wrapper>
-        <LoginForm></LoginForm>
+        <h1>Forgot pwd</h1>
       </Wrapper>
       </div>
     )

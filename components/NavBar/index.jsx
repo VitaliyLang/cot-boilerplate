@@ -26,8 +26,8 @@ class AppHeader extends Component {
     return (
       <TopBarContainer>
         <Flex align='center'>
-          <Box w={180} role='button' onClick={this.props.toggleSideNav}>
-            <Logo src={'https://avatars2.githubusercontent.com/u/35529941?s=200&v=4'} />
+          <Box w={1 / 10} role='button' onClick={this.props.toggleSideNav}>
+            <Logo src={'../static/images/logo.png'} />
           </Box>
           <Box w={1 / 3.5}>
             <SearchBar />

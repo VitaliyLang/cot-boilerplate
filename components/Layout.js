@@ -31,7 +31,7 @@ class Layout extends Component {
               <AppHeader toggleSideNav={this.toggleSideNav} />
               <SideNav ref={el => (this.sideNavRef = el)} />
               <main>
-                <Flex justifyContent='stretch' pl={205} pr={55}>
+                <Flex justifyContent='center' pl={205} pr={55}>
                   {this.props.children}
                 </Flex>
               </main>
