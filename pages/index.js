@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import fetchApi from '../lib/fetchApi'
-import Last5Customers from '../components/Last5Customers'
+import Last5Customers from '../components/dashboard/Last5Customers'
 import PropTypes from 'prop-types'
 import { Box } from 'grid-styled'
 

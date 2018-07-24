@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import OutsideAlerter from 'cot-experience/dist/components/OutsideAlerter/OutsideAlerter'
-import Dropdown from '../Dropdown'
+import Dropdown from '../lib/Dropdown'
 
 const DropdownContainer = styled.div`
   position: relative;
@@ -71,7 +71,7 @@ export default class AdminWidget extends Component {
             }
           </DropdownContainer>
         </OutsideAlerter>
-        <AdminAvatar src='https://png.icons8.com/dotty/2x/administrator-male.png' />
+        <AdminAvatar src='https://d30y9cdsu7xlg0.cloudfront.net/png/214280-200.png' />
       </Fragment>
     )
   }

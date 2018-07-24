@@ -1,9 +1,9 @@
-import { SideNav } from 'cot-experience'
 import { Flex } from 'grid-styled'
 import React, { Component, Fragment } from 'react'
 import { ThemeProvider } from 'styled-components'
 import PropTypes from 'prop-types'
 import AppHeader from './NavBar'
+import { withRouter } from 'next/router'
 
 const defaultTheme = {
   colorPrimary: '#27B161',
@@ -18,20 +18,23 @@ const defaultTheme = {
 }
 
 class Layout extends Component {
-  toggleSideNav = () => {
-    this.sideNavRef.toggle()
-  }
+  // toggleSideNav = () => {
+  //   this.sideNavRef.open()
+  // }
 
   render() {
+    const { pathname } = this.props.router
+    const centeredLayoutRoutes = ['/login', '/forgot-password', '/reset-password']
+    const centeredLayout = !!~centeredLayoutRoutes.indexOf(pathname)
     return (
       <ThemeProvider theme={defaultTheme}>
         <Fragment>
-          {this.props.isLogged ? (
+          {!centeredLayout ? (
             <Fragment>
-              <AppHeader toggleSideNav={this.toggleSideNav} />
-              <SideNav ref={el => (this.sideNavRef = el)} />
+              <AppHeader />
+              {/* <SideNav ref={el => (this.sideNavRef = el)} /> */}
               <main>
-                <Flex justifyContent='center' pl={205} pr={55}>
+                <Flex pl={205} pr={55}>
                   {this.props.children}
                 </Flex>
               </main>
@@ -51,7 +54,8 @@ class Layout extends Component {
 
 Layout.propTypes = {
   isLogged: PropTypes.bool.isRequired,
-  children: PropTypes.object.isRequired
+  children: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired
 }
 
-export default Layout
+export default withRouter(Layout)

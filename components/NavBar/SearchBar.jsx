@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import styled, { withTheme } from 'styled-components'
 import fetchApi from '../../lib/fetchApi'
 import Link from 'next/link'
-import Dropdown from '../Dropdown'
+import Dropdown from '../lib/Dropdown'
 import OutsideAlerter from 'cot-experience/dist/components/OutsideAlerter/OutsideAlerter'
 
 const SearchForm = styled.form`
