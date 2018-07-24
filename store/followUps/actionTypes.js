@@ -1,0 +1,4 @@
+export const LOAD_FOLLOW_UPS = 'LOAD_FOLLOW_UPS'
+export const COMPLETE = 'COMPLETE'
+export const UNCOMPLETE = 'UNCOMPLETE'
+export const REMOVE_COMPLETED = 'REMOVE_COMPLETED'

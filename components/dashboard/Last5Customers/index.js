@@ -14,14 +14,14 @@ const Last5CustomersContainer = styled.div`
   }
   th, td {
     &:nth-child(1) {
-      flex-basis: 20%;
+      flex-basis: 250px;
     }
     &:nth-child(2), &:nth-child(3) {
-      flex-basis: 40%;
+      flex-basis: calc(50% - 200px);
     }
     &:nth-child(4) {
-      flex-basis: 145px;
-      text-align: center;
+      flex-basis: 150px;
+      justify-content: flex-end;
     }
   }
 `

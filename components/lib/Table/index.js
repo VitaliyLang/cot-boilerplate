@@ -25,9 +25,12 @@ const Table = styled.table`
     text-align: left;
   }
   th, td {
-    padding: 10px 15px;
+    padding: 5px 15px;
     flex-grow: 1;
     flex-basis: 0;
+    min-height: 34px;
+    display: flex;
+    align-items: center;
   }
   a {
     color: #000;
