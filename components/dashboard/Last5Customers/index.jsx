@@ -34,6 +34,7 @@ const Last5Customers = ({ customers, fetchError }) => {
     layout = (<p>No customers viewed</p>)
   } else {
     layout = (
+<<<<<<< Updated upstream:components/dashboard/Last5Customers/index.jsx
       <ThemedTable>
         <table>
           <thead>
@@ -42,6 +43,28 @@ const Last5Customers = ({ customers, fetchError }) => {
               <th>Customer Name</th>
               <th>Bussiness Name</th>
               <th></th>
+=======
+      <Table>
+        <thead>
+          <tr>
+            <th>Locator ID</th>
+            <th>Customer Name</th>
+            <th>Business Name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {customers.map(item => (
+            <tr key={item._id}>
+              <td>{item._id}</td>
+              <td>{item.name}</td>
+              <td>{item.name}</td>
+              <td>
+                <Link href={`${item._id}/dashboard`} key={item._id}>
+                  <a>Go to profile</a>
+                </Link>
+              </td>
+>>>>>>> Stashed changes:components/dashboard/Last5Customers/index.js
             </tr>
           </thead>
           <tbody>
