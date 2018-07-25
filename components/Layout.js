@@ -1,6 +1,6 @@
 import { Flex } from 'grid-styled'
 import React, { Component, Fragment } from 'react'
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import PropTypes from 'prop-types'
 import AppHeader from './NavBar'
 import { withRouter } from 'next/router'
@@ -16,7 +16,14 @@ const defaultTheme = {
   colorSuccess: '#27B161',
   breakpoints: [32, 48, 64]
 }
-
+const AuthWrapper = styled(Flex)`
+  flex-grow: 1;
+  margin: 150px auto;
+  flex-basis: 1;
+  max-width: 550px;
+  display: flex;
+  justify-content: space-around;
+`
 class Layout extends Component {
   // toggleSideNav = () => {
   //   this.sideNavRef.open()
@@ -41,9 +48,9 @@ class Layout extends Component {
             </Fragment>
           ) : (
               <main>
-                <Flex>
+                <AuthWrapper m='100px auto' justify='stretch'>
                   {this.props.children}
-                </Flex>
+                </AuthWrapper>
               </main>
             )}
         </Fragment>

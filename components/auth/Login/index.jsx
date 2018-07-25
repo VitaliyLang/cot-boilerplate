@@ -1,8 +1,8 @@
-import styled, { ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
 import React, { Component, Fragment } from 'react'
 import { Checkbox, Paper, Button } from 'cot-experience'
 import { connect } from 'react-redux'
-import Input from '../Inputs/TextInput'
+import Input from '../../lib/Input/TextInput'
 import Link from 'next/link'
 
 const FormWrapper = styled.div`
@@ -12,11 +12,18 @@ const FormWrapper = styled.div`
 `
 const Header = styled.section`
   padding: 10px 20px;
-  background-color: lightgray;
+  background-color: #f4f4f4;
   border-radius: 5px 5px 0 0;
+  border: 1px solid #bebebe;
+  border-bottom: none;
   img {
     width: 150px;
   }
+`
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 const StyledInput = styled(Input)`
   background: palevioletred;
@@ -24,13 +31,14 @@ const StyledInput = styled(Input)`
     margin-bottom: 10px;
   }
 `
-const SubmitBtn = styled(Button)`
-  background: lightgray;
-  margin-top: 20px;
+const StyledPaper = styled(Paper)`
+width: 100%;
 `
-const InputStyling = {
-  width: '500px'
-}
+const SubmitBtn = styled(Button)`
+  margin-top: 20px;
+  width: 95%;
+  background-color: #ddd;
+`
 const Footer = styled.section`
   display: flex;
   justify-content: space-between;
@@ -48,7 +56,7 @@ class LoginForm extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({ [e.target.name]: e.target.value })
   }
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value })
@@ -60,33 +68,33 @@ class LoginForm extends Component {
           <Header>
             <img src="../static/images/logo-text.png" alt="CapitalOnTap logo" />
           </Header>
-          <form onSubmit={this.onSubmit}>
-            <Paper>
-              <ThemeProvider theme={InputStyling}>
-                <Fragment>
-                  <StyledInput
-                    name="username"
-                    type='text'
-                    minLength={3}
-                    placeholder='username here'
-                    value={this.state.username}
-                  />
-                  <StyledInput
-                    name="password"
-                    type='password'
-                    minLength={6}
-                    placeholder='Password here'
-                    value={this.state.password}
-                  />
-                </Fragment>
-              </ThemeProvider>
+          <StyledForm onSubmit={this.onSubmit}>
+            <StyledPaper>
+              <Fragment>
+                <StyledInput
+                  name="username"
+                  type='text'
+                  minLength={3}
+                  placeholder='Username'
+                  value={this.state.username}
+                  full
+                />
+                <StyledInput
+                  name="password"
+                  type='password'
+                  minLength={6}
+                  placeholder='Password'
+                  value={this.state.password}
+                  full
+                />
+              </Fragment>
               <Footer>
                 <Checkbox label='Remember me' />
-                <Link href='/forgot'>Forgot password?</Link>
+                <Link href='/forgot-password'>Forgot password?</Link>
               </Footer>
-            </Paper>
+            </StyledPaper>
             <SubmitBtn full type='submit'>Log In</SubmitBtn>
-          </form>
+          </StyledForm>
         </FormWrapper>
       </Fragment>
     )

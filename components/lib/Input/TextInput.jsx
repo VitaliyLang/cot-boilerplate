@@ -5,9 +5,11 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const StyledTextInput = styled(TextInput)`
-  /* background: red; */
   width: ${props => props.theme.width};
   padding: ${props => props.theme.padding};
+  &::placeholder {
+    color: #aaa;
+  }
 `
 
 StyledTextInput.defaultProps = {
@@ -21,6 +23,7 @@ class Input extends Component {
     errorMessage: PropTypes.string,
     minLength: PropTypes.number,
     required: PropTypes.string,
+    full: PropTypes.boolean,
   };
   static defaultProps = {
     type: 'text',
@@ -68,6 +71,7 @@ class Input extends Component {
           value={this.state.value}
           onBlur={() => this.validateField()}
           onChange={this.onChange}
+          full={this.props.full}
         /> 
     )
   }

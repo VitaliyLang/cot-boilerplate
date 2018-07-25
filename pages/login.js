@@ -1,13 +1,9 @@
 import styled from 'styled-components'
 import React, { Component } from 'react'
-import LoginForm from '../components/LoginForm'
+import LoginForm from '../components/auth/Login'
 
 const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* width: 100vw; */
-  height: 100vh;
+  width: 100%;
 `
 class Login extends Component {
   constructor(props) {
@@ -15,11 +11,9 @@ class Login extends Component {
   }
   render() {
     return (
-      <div>
       <Wrapper>
         <LoginForm></LoginForm>
       </Wrapper>
-      </div>
     )
   }
 }
