@@ -12,7 +12,7 @@ class Homepage extends Component {
     const fetchLast5 = async () => {
       let fetchError, customers
       try {
-        customers = await fetchApi('/customers?_start=0&_limit=5')
+        customers = await fetchApi(true, '/customers?_start=0&_limit=5')
       } catch (e) {
         fetchError = 'Failed to fetch.'
       }

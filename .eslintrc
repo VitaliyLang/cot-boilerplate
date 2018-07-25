@@ -21,7 +21,8 @@
       1,
       "single"
     ],
-    "no-console": 1
+    "no-console": 1,
+    "no-case-declarations": 0
   },
   "env": {
     "node": true,

@@ -1,44 +1,55 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Table from '../../lib/Table'
-import { Checkbox } from 'cot-experience'
+import ThemedTable from '../../lib/ThemedTable'
+import { Button, HighlightStrip } from 'cot-experience'
+import FollowUpsTableRow from './FollowUpsTableRow'
+import styled from 'styled-components'
 
-const FollowUpsTable = ({ items }) => {
-  if (items.length === 0) {
-    return <p>No items yet.</p>
+const EmptyMessageContainer = styled.div`
+  margin-top: 15px;
+`
+
+const FollowUpsTable = ({ items, complete, fetchClearComplete }) => {
+  if (items.length === 0 && complete) {
+    return (
+      <EmptyMessageContainer >
+        <HighlightStrip>No completed follow ups.</HighlightStrip>
+      </EmptyMessageContainer>
+    )
   }
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th>Locator ID</th>
-          <th>Company Name</th>
-          <th>Note</th>
-          <th>Due Time</th>
-          <th>Complete</th>
-        </tr>
-      </thead>
-      <tbody>
-        {items.map(item => (
-          <tr key={item._id}>
-            <td>{item._id}</td>
-            <td>{item.name}</td>
-            <td>{item.note}</td>
-            <td>{item.dueTime}</td>
-            <td>
-              <Checkbox
-                checked={item.completed}
-                primary={item.completed} />
-            </td>
+    <ThemedTable maxBodyHeight='180px'>
+      <table>
+        <thead>
+          <tr>
+            <th>Locator ID</th>
+            <th>Company Name</th>
+            <th>Note</th>
+            <th>Due Time</th>
+            <th>Complete</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {items.map(item => (
+            <FollowUpsTableRow item={item} key={item.id} />
+          ))}
+        </tbody>
+      </table>
+      {complete &&
+        <div className='bottom-button-bar'>
+          <Button onClick={fetchClearComplete}>
+            Empty All
+          </Button>
+        </div>
+      }
+    </ThemedTable>
   )
 }
 
 FollowUpsTable.propTypes = {
-  items: PropTypes.array
+  items: PropTypes.array,
+  complete: PropTypes.bool.isRequired,
+  fetchClearComplete: PropTypes.func.isRequired
 }
 
 export default FollowUpsTable

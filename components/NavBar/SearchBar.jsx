@@ -54,7 +54,7 @@ class SearchBar extends Component {
       this.setState({ customers: [] })
     } else {
       try {
-        const customers = await fetchApi('/customers')
+        const customers = await fetchApi(true, '/customers')
         this.setState({ customers })
       } catch(e) {
         alert('Failed to fetch results.')
@@ -81,7 +81,7 @@ class SearchBar extends Component {
           {!!customers.length &&
             <CustomersDropdown>
               {customers.map(item => (
-                <Link href={`${item._id}/dashboard`} key={item._id}>
+                <Link href={`${item.id}/dashboard`} key={item.id}>
                   <a>{item.name}</a>
                 </Link>
               ))}

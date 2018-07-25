@@ -1,14 +1,15 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import FollowUpsTable from './FollowUpsTable'
 import { Tabs, Tab, HighlightStrip } from 'cot-experience'
 import styled from 'styled-components'
+import { fetchClearComplete } from '../../../store/followUps/actions'
 
 const FollowUpsContainer = styled.div`
   margin-top: 50px;
   >div:first-child {
-    width: 250px;
+    width: ${props => props.error ? '100%' : '250px'};
     a {
       font-size: 18px;
     }
@@ -34,34 +35,52 @@ const FollowUpsContainer = styled.div`
       margin-right: 0;
     }
   }
+  .bottom-button-bar {
+    text-align: right;
+  }
 `
 
 class FollowUps extends Component {
   static propTypes = {
     items: PropTypes.array,
-    fetchError: PropTypes.string
+    fetchError: PropTypes.string,
+    fetchClearComplete: PropTypes.func.isRequired
   }
 
   state = {
     showComplete: false
   }
 
+  fetchClearComplete = async () => {
+    try {
+      await this.props.fetchClearComplete()
+    } catch (e) {
+      alert('Operation Failed')
+    }
+  }
+
   render() {
     const { fetchError, items } = this.props
-    const filteredItems = items.filter(item => item.completed === this.state.showComplete)
+    if (fetchError) {
+      return (
+        <FollowUpsContainer error>
+          <HighlightStrip>{fetchError}</HighlightStrip>
+        </FollowUpsContainer>
+      )
+    } else if (items.length === 0) {
+      return null
+    }
+    const filteredItems = items.filter(item => item.complete === this.state.showComplete)
     return (
       <FollowUpsContainer>
-        {fetchError ? (
-          <HighlightStrip>{fetchError}</HighlightStrip>
-        ) : (
-            <Fragment>
-              <Tabs onTabClicked={idx => this.setState({ showComplete: !!idx })}>
-                <Tab title="Follow Up" />
-                <Tab title="Complete" />
-              </Tabs>
-              <FollowUpsTable items={filteredItems} />
-            </Fragment>
-          )}
+        <Tabs onTabClicked={idx => this.setState({ showComplete: !!idx })}>
+          <Tab title="Follow Up" />
+          <Tab title="Complete" />
+        </Tabs>
+        <FollowUpsTable
+          fetchClearComplete={this.fetchClearComplete}
+          items={filteredItems}
+          complete={this.state.showComplete} />
       </FollowUpsContainer>
     )
   }
@@ -72,4 +91,8 @@ const mapStateToProps = ({ followUps }) => ({
   fetchError: followUps.error
 })
 
-export default connect(mapStateToProps)(FollowUps)
+const mapDispatchToProps = dispatch => ({
+  fetchClearComplete: () => dispatch(fetchClearComplete())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(FollowUps)

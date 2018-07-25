@@ -10,7 +10,6 @@ import App, { Container } from 'next/app'
 import React from 'react'
 import Layout from '../components/Layout'
 import { initStore } from '../store'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 export default withRedux(initStore, { debug: false })(
