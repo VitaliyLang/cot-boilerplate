@@ -63,40 +63,38 @@ class LoginForm extends Component {
   }
   render() {
     return (
-      <Fragment>
-        <FormWrapper>
-          <Header>
-            <img src="../static/images/logo-text.png" alt="CapitalOnTap logo" />
-          </Header>
-          <StyledForm onSubmit={this.onSubmit}>
-            <StyledPaper>
-              <Fragment>
-                <StyledInput
-                  name="username"
-                  type='text'
-                  minLength={3}
-                  placeholder='Username'
-                  value={this.state.username}
-                  full
-                />
-                <StyledInput
-                  name="password"
-                  type='password'
-                  minLength={6}
-                  placeholder='Password'
-                  value={this.state.password}
-                  full
-                />
-              </Fragment>
-              <Footer>
-                <Checkbox label='Remember me' />
-                <Link href='/forgot-password'>Forgot password?</Link>
-              </Footer>
-            </StyledPaper>
-            <SubmitBtn full type='submit'>Log In</SubmitBtn>
-          </StyledForm>
-        </FormWrapper>
-      </Fragment>
+      <FormWrapper>
+        <Header>
+          <img src="../static/images/logo-text.png" alt="CapitalOnTap logo" />
+        </Header>
+        <StyledForm onSubmit={this.onSubmit}>
+          <StyledPaper>
+            <Fragment>
+              <StyledInput
+                name="username"
+                type='text'
+                minLength={3}
+                placeholder='Username'
+                value={this.state.username}
+                full
+              />
+              <StyledInput
+                name="password"
+                type='password'
+                minLength={6}
+                placeholder='Password'
+                value={this.state.password}
+                full
+              />
+            </Fragment>
+            <Footer>
+              <Checkbox label='Remember me' />
+              <Link href='/forgot-password'><a>Forgot password?</a></Link>
+            </Footer>
+          </StyledPaper>
+          <SubmitBtn full type='submit'>Log In</SubmitBtn>
+        </StyledForm>
+      </FormWrapper>
     )
   }
 }

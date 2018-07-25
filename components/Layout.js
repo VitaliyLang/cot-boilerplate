@@ -18,11 +18,11 @@ const defaultTheme = {
 }
 const AuthWrapper = styled(Flex)`
   flex-grow: 1;
-  margin: 150px auto;
   flex-basis: 1;
   max-width: 550px;
-  display: flex;
-  justify-content: space-around;
+  >div {
+    width: 100%;
+  }
 `
 class Layout extends Component {
   // toggleSideNav = () => {
@@ -48,7 +48,7 @@ class Layout extends Component {
             </Fragment>
           ) : (
               <main>
-                <AuthWrapper m='100px auto' justify='stretch'>
+                <AuthWrapper m='150px auto' justify='space-around'>
                   {this.props.children}
                 </AuthWrapper>
               </main>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { TextInput } from 'cot-experience'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -19,11 +18,10 @@ class Input extends Component {
   static propTypes = {
     placeholder: PropTypes.string.isRequired,
     name: PropTypes.string,
-    type: PropTypes.string,
-    errorMessage: PropTypes.string,
+    type: PropTypes.string.isRequired,
     minLength: PropTypes.number,
-    required: PropTypes.string,
-    full: PropTypes.boolean,
+    required: PropTypes.bool,
+    full: PropTypes.bool,
   };
   static defaultProps = {
     type: 'text',
@@ -61,20 +59,22 @@ class Input extends Component {
   }
 
   render() {
+    const { name, type, placeholder, full } = this.props
+    const { errorMessage, value } = this.state
     return (
-        <StyledTextInput
-          name={this.props.name}
-          type={this.props.type}
-          placeholder={this.props.placeholder}
-          required={this.state.errorMessage ? true : null}
-          error={this.state.errorMessage}
-          value={this.state.value}
-          onBlur={() => this.validateField()}
-          onChange={this.onChange}
-          full={this.props.full}
-        /> 
+      <StyledTextInput
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        required={errorMessage ? true : null}
+        error={errorMessage}
+        value={value}
+        onBlur={this.validateField}
+        onChange={this.onChange}
+        full={full}
+      />
     )
   }
 }
 
-export default connect()(Input)
+export default Input
