@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import SearchBar from './SearchBar'
 import styled from 'styled-components'
 import { Box, Flex } from 'grid-styled'
@@ -17,32 +16,24 @@ const Logo = styled.img`
   display: block;
 `
 
-class AppHeader extends Component {
-  static propTypes = {
-    toggleSideNav: PropTypes.func.isRequired
-  }
-
-  render() {
-    return (
-      <TopBarContainer>
-        <Flex align='center'>
-          <Box w={1 / 10} role='button' onClick={this.props.toggleSideNav}>
-            <Logo src={'../static/images/logo.png'} />
-          </Box>
-          <Box w={1 / 3.5}>
-            <SearchBar />
-          </Box>
-          <Flex
-            ml='auto'
-            alignItems='center'
-            justifyContent='flex-end'
-            w='250px'>
-            <AdminWidget />
-          </Flex>
-        </Flex>
-      </TopBarContainer>
-    )
-  }
-}
+const AppHeader = () => (
+  <TopBarContainer>
+    <Flex align='center'>
+      <Box w={1 / 10} role='button'>
+        <Logo src={'../static/images/logo.png'} />
+      </Box>
+      <Box w={1 / 3.5}>
+        <SearchBar />
+      </Box>
+      <Flex
+        ml='auto'
+        alignItems='center'
+        justifyContent='flex-end'
+        w='250px'>
+        <AdminWidget />
+      </Flex>
+    </Flex>
+  </TopBarContainer>
+)
 
 export default AppHeader

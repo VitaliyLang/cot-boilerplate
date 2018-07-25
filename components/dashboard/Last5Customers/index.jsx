@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { HighlightStrip } from 'cot-experience'
-import Table from '../../lib/Table'
+import ThemedTable from '../../lib/ThemedTable'
 import Link from 'next/link'
 
 const Last5CustomersContainer = styled.div`
@@ -14,14 +14,14 @@ const Last5CustomersContainer = styled.div`
   }
   th, td {
     &:nth-child(1) {
-      flex-basis: 20%;
+      flex-basis: 250px;
     }
     &:nth-child(2), &:nth-child(3) {
-      flex-basis: 40%;
+      flex-basis: calc(50% - 200px);
     }
     &:nth-child(4) {
-      flex-basis: 145px;
-      text-align: center;
+      flex-basis: 150px;
+      justify-content: flex-end;
     }
   }
 `
@@ -34,30 +34,32 @@ const Last5Customers = ({ customers, fetchError }) => {
     layout = (<p>No customers viewed</p>)
   } else {
     layout = (
-      <Table>
-        <thead>
-          <tr>
-            <th>Locator ID</th>
-            <th>Customer Name</th>
-            <th>Bussiness Name</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {customers.map(item => (
-            <tr key={item._id}>
-              <td>{item._id}</td>
-              <td>{item.name}</td>
-              <td>{item.name}</td>
-              <td>
-                <Link href={`${item._id}/dashboard`} key={item._id}>
-                  <a>Go to profile</a>
-                </Link>
-              </td>
+      <ThemedTable>
+        <table>
+          <thead>
+            <tr>
+              <th>Locator ID</th>
+              <th>Customer Name</th>
+              <th>Bussiness Name</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {customers.map(item => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.name}</td>
+                <td>
+                  <Link href={`${item.id}/dashboard`} key={item.id}>
+                    <a>Go to profile</a>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </ThemedTable>
     )
   }
   return (
