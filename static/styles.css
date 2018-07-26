@@ -5,3 +5,7 @@ html {
 * {
   font-family: Lato;
 }
+
+a {
+  cursor: pointer;
+}

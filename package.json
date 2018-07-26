@@ -7,13 +7,13 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint": "eslint --ext .js --ext .jsx .",
     "fix": "yarn lint --fix",
     "mock-api": "json-server -p 3001 --watch db.json",
-    "test": "jest"
+    "test": "jest -u"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.5.1",
@@ -23,6 +23,7 @@
     "isomorphic-unfetch": "^2.0.0",
     "next": "^6.1.1",
     "next-redux-wrapper": "^2.0.0-beta.6",
+    "next-routes": "^1.4.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",

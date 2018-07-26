@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react'
 import { Checkbox, Paper, Button } from 'cot-experience'
 import { connect } from 'react-redux'
 import Input from '../../lib/Input/TextInput'
-import Link from 'next/link'
+import { Link } from '../../../routes'
 
 const FormWrapper = styled.div`
   input {
@@ -56,11 +56,11 @@ class LoginForm extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-    console.log(this.state)
+    // console.log(this.state)
   }
   onChange = (field, value) => {
     this.setState({ [field]: value })
-    console.log(value)
+    // console.log(value)
   }
 
   render() {
@@ -94,7 +94,7 @@ class LoginForm extends Component {
             </Fragment>
             <Footer>
               <Checkbox label='Remember me' />
-              <Link href='/forgot-password'><a>Forgot password?</a></Link>
+              <Link route='/forgot-password'><a>Forgot password?</a></Link>
             </Footer>
           </StyledPaper>
           <SubmitBtn full type='submit'>Log In</SubmitBtn>

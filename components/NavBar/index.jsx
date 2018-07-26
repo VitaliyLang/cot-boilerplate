@@ -3,6 +3,7 @@ import SearchBar from './SearchBar'
 import styled from 'styled-components'
 import { Box, Flex } from 'grid-styled'
 import AdminWidget from './AdminWidget'
+import { Link } from '../../routes'
 
 const TopBarContainer = styled.header`
   padding: 25px 55px 25px 25px;
@@ -11,16 +12,24 @@ const TopBarContainer = styled.header`
   background-color: #fff;
 `
 
-const Logo = styled.img`
+const LogoLink = styled.a`
   width: 40px;
   display: block;
+  img {
+    width: 100%;
+    display: block;
+  }
 `
 
 const AppHeader = () => (
   <TopBarContainer>
     <Flex align='center'>
       <Box w={1 / 10} role='button'>
-        <Logo src={'../static/images/logo.png'} />
+        <Link route='/'>
+          <LogoLink>
+            <img src={'../static/images/logo.png'} />
+          </LogoLink>
+        </Link>
       </Box>
       <Box w={1 / 3.5}>
         <SearchBar />

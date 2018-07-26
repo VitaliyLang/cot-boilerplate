@@ -2,7 +2,7 @@ import { Button, TextInput } from 'cot-experience'
 import React, { Component } from 'react'
 import styled, { withTheme } from 'styled-components'
 import fetchApi from '../../lib/fetchApi'
-import Link from 'next/link'
+import { Link } from '../../routes'
 import Dropdown from '../lib/Dropdown'
 import OutsideAlerter from 'cot-experience/dist/components/OutsideAlerter/OutsideAlerter'
 
@@ -13,6 +13,19 @@ const SearchForm = styled.form`
   > div {
     flex-grow: 1
   }
+  button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    flex-basis: 10%;
+    i {
+      color: #fff;
+    }
+  }
 `
 
 const SearchInput = styled(TextInput)`
@@ -22,19 +35,6 @@ const SearchInput = styled(TextInput)`
   border-bottom-right-radius: 0 !important;
 `
 
-const SearchButton = styled(Button)`
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-  padding-top: 0;
-  padding-bottom: 0;
-  flex-basis: 10%;
-  i {
-    color: #fff;
-  }
-`
 const CustomersDropdown = styled(Dropdown)`
   top: 110%;
   left: 0;
@@ -56,7 +56,7 @@ class SearchBar extends Component {
       try {
         const customers = await fetchApi(true, '/customers')
         this.setState({ customers })
-      } catch(e) {
+      } catch (e) {
         alert('Failed to fetch results.')
       }
     }
@@ -77,11 +77,11 @@ class SearchBar extends Component {
             placeholder='Search customer'
             onChange={this.handleChange}
             name='searchValue' />
-          <SearchButton primary solid icon='search' />
+          <Button primary solid icon='search' />
           {!!customers.length &&
-            <CustomersDropdown>
+            <CustomersDropdown onClick={() => this.setState({ customers: [] })} >
               {customers.map(item => (
-                <Link href={`${item.id}/dashboard`} key={item.id}>
+                <Link route={`/${item.id}/dashboard`} key={item.id}>
                   <a>{item.name}</a>
                 </Link>
               ))}

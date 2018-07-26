@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { HighlightStrip } from 'cot-experience'
 import ThemedTable from '../../lib/ThemedTable'
-import Link from 'next/link'
+import { Link } from '../../../routes'
 
 const Last5CustomersContainer = styled.div`
   h5 {
@@ -51,7 +51,7 @@ const Last5Customers = ({ customers, fetchError }) => {
                 <td>{item.name}</td>
                 <td>{item.name}</td>
                 <td>
-                  <Link href={`${item.id}/dashboard`} key={item.id}>
+                  <Link route={`/${item.id}/dashboard`} key={item.id}>
                     <a>Go to profile</a>
                   </Link>
                 </td>

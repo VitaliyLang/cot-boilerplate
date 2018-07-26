@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
+import { Link } from '../../routes'
 import OutsideAlerter from 'cot-experience/dist/components/OutsideAlerter/OutsideAlerter'
 import Dropdown from '../lib/Dropdown'
 
@@ -61,7 +61,7 @@ export default class AdminWidget extends Component {
             </ActionsDropdownBtn>
             {dropdownOpened &&
               <ActionsDropdown>
-                <Link href='reset-password'>
+                <Link route='reset-password'>
                   <a>Change password</a>
                 </Link>
                 <button onClick={() => { }}>

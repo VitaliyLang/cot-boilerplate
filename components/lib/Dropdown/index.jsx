@@ -8,6 +8,7 @@ const Dropdown = styled(Paper)`
   border: 1px solid rgb(228, 228, 228);
   max-height: 30vh;
   overflow: auto;
+  z-index: 100;
   button, a {
     background-color: transparent;
     border: none;

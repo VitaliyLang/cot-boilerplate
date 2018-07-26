@@ -1,13 +1,13 @@
 import React from 'react'
 import { shallow, configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-configure({ adapter: new Adapter() })
 import data from '../db'
-const { customers } = data
-
 import Last5Customers from '../components/dashboard/Last5Customers/index'
 
-describe('Last5Customers', function() {
+configure({ adapter: new Adapter() })
+const { customers } = data
+
+describe('Last5Customers', function () {
   const wrapper = shallow(<Last5Customers customers={customers} fetchError={null} />)
   const wrapper_for_error = shallow(<Last5Customers customers={null} fetchError={'Error'} />)
   const customer_list = wrapper.find('tbody tr')
@@ -28,7 +28,7 @@ describe('Last5Customers', function() {
   })
 
   it('It should output error If we have not candidates table', () => {
-      const error = wrapper_for_error.find('HighlightStrip')
-      expect(error.length).toBe(1);
+    const error = wrapper_for_error.find('HighlightStrip')
+    expect(error.length).toBe(1)
   })
 })
