@@ -33,14 +33,28 @@ class Input extends Component {
   }
 
   onChange = e => {
-    this.setState({ fieldValue: e.target.value })
-    if (this.state.fieldValue.length >= this.props.minLength - 1) {
-      this.setState({
-        errorMessage: null,
-        isValid: true
-      })
+    const { name, value, type } = e.target
+    const { minLength, onChange } = this.props
+    let res = {}
+    if (minLength && e.target.value.length >= minLength) {
+      res = {
+        isValid: true,
+        errorMessage: null
+      }
+    } else if (type === 'email' && value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+      res = {
+        isValid: true,
+        errorMessage: null
+      }
+    } 
+    else {
+      res = {
+        isValid: false,
+      }
     }
-    this.props.onChange(e.target.name, e.target.value)
+    this.setState({ fieldValue: e.target.value, isValid: res.isValid, errorMessage: res.errorMessage }, () => {
+      onChange(name, value, this.state.isValid)
+    })
   }
 
   validateField = () => {

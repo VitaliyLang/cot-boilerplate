@@ -4,20 +4,11 @@ import { Checkbox, Paper, Button } from 'cot-experience'
 import { connect } from 'react-redux'
 import Input from '../../lib/Input/TextInput'
 import { Link } from '../../../routes'
+import Header from '../Header'
 
 const FormWrapper = styled.div`
   input {
     margin-bottom: 20px;
-  }
-`
-const Header = styled.section`
-  padding: 10px 20px;
-  background-color: #f4f4f4;
-  border-radius: 5px 5px 0 0;
-  border: 1px solid #bebebe;
-  border-bottom: none;
-  img {
-    width: 150px;
   }
 `
 const StyledForm = styled.form`
@@ -51,24 +42,28 @@ const Footer = styled.section`
 class LoginForm extends Component {
   state = {
     username: '',
-    password: ''
+    password: '',
+    usernameValid: false,
+    passwordValid: false,
+    isFormValid: false,
   }
-
   onSubmit = e => {
     e.preventDefault()
-    // console.log(this.state)
   }
-  onChange = (field, value) => {
-    this.setState({ [field]: value })
-    // console.log(value)
+  onChange = (field, value, isValid) => {
+    this.setState({ [field]: value, [`${field}Valid`]: isValid }, () => {
+      // this.checkValidation()
+    })
   }
-
+  // checkValidation = () => {
+  //   if(this.state.usernameValid && this.state.passwordValid){
+  //     this.setState({isFormValid: true})
+  //   }
+  // }
   render() {
     return (
       <FormWrapper>
-        <Header>
-          <img src="../static/images/logo-text.png" alt="CapitalOnTap logo" />
-        </Header>
+        <Header/>
         <StyledForm onSubmit={this.onSubmit}>
           <StyledPaper>
             <Fragment>
@@ -97,7 +92,7 @@ class LoginForm extends Component {
               <Link route='/forgot-password'><a>Forgot password?</a></Link>
             </Footer>
           </StyledPaper>
-          <SubmitBtn full type='submit'>Log In</SubmitBtn>
+          <SubmitBtn full type='submit' disabled={!this.state.usernameValid || !this.state.passwordValid}>Log In</SubmitBtn>
         </StyledForm>
       </FormWrapper>
     )

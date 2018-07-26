@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Heading1, Paper, Button } from 'cot-experience'
 import Input from '../../lib/Input/TextInput'
+import Header from '../Header'
 
 const ComponentWrapper = styled.section`
   width: 100%;
@@ -33,17 +34,20 @@ const ComponentWrapper = styled.section`
 class ForgotPassword extends Component {
   state = {
     email: '',
+    emailValid: false
   }
-  // onSubmit = e => {
-  // }
-
+  onSubmit = e => {
+    e.preventDefault()
+  }
+  onChange = (field, value, isValid) => {
+    this.setState({ [field]: value, [`${field}Valid`]: isValid }, () => {
+    })    
+  }
   render() {
     return (
       <ComponentWrapper>
         <Heading1>Forgot password?</Heading1>
-        <header>
-          <img src="../static/images/logo-text.png" alt="CapitalOnTap logo" />
-        </header>
+        <Header/>
         <form onSubmit={this.onSubmit}>
           <Paper>
             <Input
@@ -51,9 +55,10 @@ class ForgotPassword extends Component {
               placeholder='Email'
               type='email'
               full
+              onChange={this.onChange}
             />
           </Paper>
-          <Button type='submit' full>Send</Button>
+          <Button type='submit' full disabled={!this.state.emailValid}>Send</Button>
         </form>
       </ComponentWrapper>
 
