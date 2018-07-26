@@ -27,7 +27,7 @@ const ComponentWrapper = styled.section`
   button {
     width: 95%;
     margin: 20px auto;
-    = background-color: #ddd;
+    background-color: #ddd;
   }
 `
 

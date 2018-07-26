@@ -56,11 +56,13 @@ class LoginForm extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-    this.setState({ [e.target.name]: e.target.value })
+    console.log(this.state)
   }
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
+  onChange = (field, value) => {
+    this.setState({ [field]: value })
+    console.log(value)
   }
+
   render() {
     return (
       <FormWrapper>
@@ -77,6 +79,7 @@ class LoginForm extends Component {
                 placeholder='Username'
                 value={this.state.username}
                 full
+                onChange={this.onChange}
               />
               <StyledInput
                 name="password"
@@ -85,6 +88,8 @@ class LoginForm extends Component {
                 placeholder='Password'
                 value={this.state.password}
                 full
+                call={this.change}
+                onChange={this.onChange}
               />
             </Fragment>
             <Footer>

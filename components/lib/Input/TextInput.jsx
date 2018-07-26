@@ -22,6 +22,7 @@ class Input extends Component {
     minLength: PropTypes.number,
     required: PropTypes.bool,
     full: PropTypes.bool,
+    onChange: PropTypes.func,
   };
   static defaultProps = {
     type: 'text',
@@ -39,9 +40,10 @@ class Input extends Component {
         isValid: true
       })
     }
+    this.props.onChange(e.target.name, e.target.value)
   }
 
-  validateField() {
+  validateField = () => {
     const { type, minLength } = this.props
     const { fieldValue, errorMessage } = this.state
     let currentErrorMessage = errorMessage
